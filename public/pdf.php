@@ -1,40 +1,39 @@
 <?php
 // public/pdf.php
 
-// Cargar el autoloader de Composer
+// Incluir el autoloader de Composer (asegúrate de haberlo generado con "composer install")
 require_once __DIR__ . '/../vendor/autoload.php';
 
 use App\PDFGenerator;
 
-// Instanciar el generador de PDF (en este ejemplo, PDFGenerator utiliza Dompdf internamente)
-$pdfGenerator = new PDFGenerator();
+// En Windows, especifica la ruta completa al binario wkhtmltopdf.
+// Verifica que la ruta exista en tu sistema.
+$wkhtmltopdfPath = "C:\\Program Files\\wkhtmltopdf\\bin\\wkhtmltopdf.exe";
 
-// Contenido HTML que se convertirá en PDF
+$pdfGenerator = new PDFGenerator($wkhtmltopdfPath);
+
+// Contenido HTML a convertir en PDF.
 $html = '
 <!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>PDF generado con Dompdf</title>
+    <title>PDF Test</title>
     <style>
         body { font-family: Arial, sans-serif; }
         h1 { color: #007bff; }
-        p  { font-size: 1rem; }
     </style>
 </head>
 <body>
-    <h1>Hola, PDF generado con Dompdf!</h1>
-    <p>Este PDF se ha generado a partir de HTML usando Dompdf y PDFGenerator.</p>
+    <h1>Hola, PDF generado correctamente!</h1>
+    <p>Este PDF se generó a partir de HTML usando Knp\Snappy.</p>
 </body>
 </html>
 ';
 
-// Generar el contenido PDF a partir del HTML
-$pdfOutput = $pdfGenerator->generateFromHtml($html);
-
-// Configurar las cabeceras para que el navegador interprete la respuesta como PDF
+// Configurar las cabeceras para que el navegador interprete la respuesta como PDF.
 header('Content-Type: application/pdf');
-header('Content-Disposition: inline; filename="documento.pdf"');
+header('Content-Disposition: inline; filename="test.pdf"');
 
-// Mostrar el PDF generado
-echo $pdfOutput;
+// Mostrar el PDF generado.
+echo $pdfGenerator->generateFromHtml($html);
