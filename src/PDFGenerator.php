@@ -4,14 +4,6 @@ namespace App;
 
 use Knp\Snappy\Pdf;
 
-// Nota: Lo ideal es incluir el autoloader de Composer (vendor/autoload.php) en el archivo de entrada 
-// (por ejemplo, en public/index.php), y no directamente en cada clase. 
-// Sin embargo, para fines de desarrollo y de verificación, incluimos la comprobación a continuación.
-if (!file_exists(__DIR__ . '/../vendor/autoload.php')) {
-    die("Error: No se encontró el archivo 'vendor/autoload.php'. Por favor, ejecuta 'composer install' en la raíz del proyecto.");
-}
-require_once __DIR__ . '/../vendor/autoload.php';
-
 /**
  * Clase para generar PDFs a partir de HTML o de una URL.
  *
