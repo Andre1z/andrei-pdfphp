@@ -1,25 +1,34 @@
 <?php
 // public/index.php
-
-// Cargar el autoloader de Composer para que las clases estén disponibles en el proyecto
 require_once __DIR__ . '/../vendor/autoload.php';
 ?>
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <title>Página de Inicio - PDF Calendario</title>
-    <!-- Enlaza el estilo específico para la página principal -->
-    <link rel="stylesheet" href="css/index.css">
+  <meta charset="UTF-8">
+  <title>Página Principal - PDF Calendario</title>
+  <link rel="stylesheet" href="css/index.css">
 </head>
 <body>
-    <h1>Bienvenido a PDF Calendario</h1>
-    <nav>
-        <ul>
-            <li><a href="calendario.php">Ver Calendario</a></li>
-            <li><a href="pdf.php">Generar PDF</a></li>
-        </ul>
-    </nav>
-    <p>Aquí puedes ver el calendario o generar un PDF a partir de contenido HTML.</p>
+  <header>
+    <h1>PDF Calendario</h1>
+  </header>
+  <nav>
+    <ul>
+      <li><a href="calendario.php">Ver Calendario</a></li>
+      <li><a href="pdf.php">Generar PDF</a></li>
+    </ul>
+  </nav>
+  <main>
+    <section>
+      <p>
+        Bienvenido a nuestra aplicación, donde podrás ver calendarios generados dinámicamente
+        y crear PDF's con un diseño minimalista y colores vivos.
+      </p>
+    </section>
+  </main>
+  <footer>
+    <p>&copy; <?php echo date("Y"); ?> PDF Calendario</p>
+  </footer>
 </body>
 </html>
