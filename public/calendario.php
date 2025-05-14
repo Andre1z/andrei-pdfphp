@@ -1,5 +1,12 @@
 <?php
-// Aquí podrías incluir la lógica para generar el calendario o requerir la clase correspondiente desde src.
+// public/calendario.php
+
+// Incluir el autoloader (ya sea el de Composer o tu autoloader personalizado)
+require_once __DIR__ . '/../vendor/autoload.php';
+// Si usas un autoloader personalizado:
+// require_once __DIR__ . '/../autoload.php';
+
+use App\CalendarGenerator;
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -9,11 +16,9 @@
     <link rel="stylesheet" href="css/calendario.css">
 </head>
 <body>
-    <!-- Aquí se mostrará el calendario generado -->
     <?php
-    // Ejemplo de integración:
-    // require '../src/CalendarGenerator.php';
-    // echo CalendarGenerator::generateCalendars(2025, 2050);
+    // Llamar al método que genera los calendarios
+    echo CalendarGenerator::generateCalendars(2025, 2050);
     ?>
 </body>
 </html>
