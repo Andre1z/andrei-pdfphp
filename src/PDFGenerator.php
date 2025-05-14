@@ -2,6 +2,11 @@
 
 namespace App;
 
+// Cargar el autoloader de Composer para que se reconozca la clase Knp\Snappy\Pdf.
+// Nota: En un entorno real lo ideal es incluir el autoloader desde el punto de entrada (por ejemplo, en public/index.php),
+// pero si editas este archivo de forma independiente, agregar esta línea puede ayudar al IDE y a pruebas aisladas.
+require_once __DIR__ . '/../vendor/autoload.php';
+
 use Knp\Snappy\Pdf;
 
 /**
