@@ -1,10 +1,13 @@
 <?php
 // public/calendario.php
 
-// Incluir el autoloader (ya sea el de Composer o tu autoloader personalizado)
+// Habilitar errores para depuración
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
+
+// Incluir el autoload generado por Composer
 require_once __DIR__ . '/../vendor/autoload.php';
-// Si usas un autoloader personalizado:
-// require_once __DIR__ . '/../autoload.php';
 
 use App\CalendarGenerator;
 ?>
@@ -17,7 +20,7 @@ use App\CalendarGenerator;
 </head>
 <body>
     <?php
-    // Llamar al método que genera los calendarios
+    // Generar y mostrar los calendarios de 2025 a 2050
     echo CalendarGenerator::generateCalendars(2025, 2050);
     ?>
 </body>
