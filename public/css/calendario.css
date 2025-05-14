@@ -1,0 +1,126 @@
+/* public/css/calendario.css */
+
+/* Configuración básica */
+body {
+    font-family: 'Segoe UI', sans-serif;
+    background-color: #f2f9ff;
+    margin: 0;
+    padding: 0;
+    color: #333;
+}
+
+header {
+    background-color: #ff6f61; /* Color vivo para el encabezado */
+    color: #fff;
+    text-align: center;
+    padding: 1em 0;
+}
+
+/* Estilos para la selección de año */
+nav.year-selection {
+    text-align: center;
+    margin-top: 2em;     /* Mayor margen superior */
+    max-width: 600px;    /* Contenedor más reducido */
+    margin-left: auto;
+    margin-right: auto;
+}
+
+nav.year-selection h2 {
+    color: #ff6f61;
+    margin-bottom: 1em;
+}
+
+nav.year-selection ul {
+    list-style: none;
+    padding: 0;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(13, 1fr);
+    gap: 10px;
+    justify-items: center;
+}
+
+nav.year-selection ul li a {
+    display: block;
+    text-decoration: none;
+    color: #ff6f61;
+    border: 2px solid #ff6f61;
+    padding: 0.5em;
+    border-radius: 5px;
+    transition: background-color 0.3s, color 0.3s;
+    text-align: center;
+    width: 60%;
+}
+
+nav.year-selection ul li a:hover {
+    background-color: #ff6f61;
+    color: #fff;
+}
+
+/* Contenedor del calendario */
+.calendar-year {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* Estilos de las tablas de calendario */
+.calendario {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 1em;
+}
+
+.calendario th,
+.calendario td {
+    border: 1px solid #ddd;
+    padding: 0.5em;
+    text-align: center;
+}
+
+.calendario th {
+    background-color: #ff6f61;
+    color: #fff;
+}
+
+.calendario td {
+    background-color: #fff;
+}
+
+.calendario td:hover {
+    background-color: #ffe5d6;
+}
+
+/* Estilos para las flechas de navegación y botón extra */
+footer.navigation-arrows {
+    text-align: center;
+    margin: 2em 0;
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+}
+
+.nav-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 1.5em;  /* Margen adicional para evitar solapamiento */
+}
+
+.nav-arrow {
+    text-decoration: none;
+    color: #fff;
+    background-color: #ff6f61;
+    padding: 0.5em 1em;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+    /* Añadimos un margen derecho para separar un poco los botones */
+    margin-right: 10px;
+}
+
+.nav-arrow:hover {
+    background-color: #e55b54;
+}
+
+/* Estilo para el botón "Volver a Inicio" */
+.nav-arrow.back {
+    margin-right: 0; /* Se puede ajustar o eliminar si se desea centrar */
+}

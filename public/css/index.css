@@ -1,0 +1,60 @@
+/* Estilos para la página principal (index.php) */
+body {
+  font-family: 'Segoe UI', sans-serif;
+  background-color: #f2f9ff;
+  margin: 0;
+  padding: 0;
+  color: #333;
+}
+
+header {
+  background-color: #ff6f61; /* Un color vivo */
+  padding: 1em 0;
+  text-align: center;
+  color: #fff;
+}
+
+nav {
+  margin: 1em 0;
+  text-align: center;
+}
+
+nav ul {
+  list-style: none;
+  padding: 0;
+}
+
+nav ul li {
+  display: inline-block;
+  margin: 0 1em;
+}
+
+nav ul li a {
+  text-decoration: none;
+  padding: 0.5em 1em;
+  border: 2px solid #ff6f61;
+  border-radius: 5px;
+  color: #ff6f61;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+nav ul li a:hover {
+  background-color: #ff6f61;
+  color: #fff;
+}
+
+main {
+  max-width: 800px;
+  margin: 2em auto;
+  padding: 0 1em;
+}
+
+footer {
+  background-color: #ff6f61;
+  color: #fff;
+  text-align: center;
+  padding: 1em 0;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+}
