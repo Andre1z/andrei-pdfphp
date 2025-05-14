@@ -5,9 +5,7 @@ namespace App;
 use Knp\Snappy\Pdf;
 
 /**
- * Clase para generar PDFs a partir de HTML o de una URL.
- *
- * Utiliza wkhtmltopdf mediante la librería Knp\Snappy para convertir contenido HTML en documentos PDF.
+ * Clase para generar PDFs a partir de HTML o de una URL utilizando wkhtmltopdf a través de Knp\Snappy.
  */
 class PDFGenerator
 {
@@ -19,11 +17,15 @@ class PDFGenerator
     protected $snappy;
 
     /**
-     * Constructor de la clase.
+     * Constructor.
+     *
+     * Es fundamental que se le pase la ruta correcta del ejecutable wkhtmltopdf.
+     * En Windows, una ruta común es:
+     * "C:\\Program Files\\wkhtmltopdf\\bin\\wkhtmltopdf.exe"
      *
      * @param string $wkhtmltopdfPath Ruta al ejecutable wkhtmltopdf.
      */
-    public function __construct(string $wkhtmltopdfPath = '/usr/bin/wkhtmltopdf')
+    public function __construct(string $wkhtmltopdfPath)
     {
         $this->snappy = new Pdf($wkhtmltopdfPath);
     }
@@ -42,7 +44,7 @@ class PDFGenerator
     /**
      * Genera un PDF a partir de una URL.
      *
-     * @param string $url La URL de la página a convertir.
+     * @param string $url La URL a convertir.
      * @return string Salida binaria del PDF generado.
      */
     public function generateFromUrl(string $url): string
@@ -51,7 +53,7 @@ class PDFGenerator
     }
 
     /**
-     * Guarda en un archivo el PDF generado a partir de contenido HTML.
+     * Guarda en un archivo el PDF generado a partir de un contenido HTML.
      *
      * @param string $html El contenido HTML a convertir.
      * @param string $filePath Ruta y nombre del archivo donde se guardará el PDF.
@@ -66,7 +68,7 @@ class PDFGenerator
     /**
      * Guarda en un archivo el PDF generado a partir de una URL.
      *
-     * @param string $url La URL de la página a convertir.
+     * @param string $url La URL a convertir.
      * @param string $filePath Ruta y nombre del archivo donde se guardará el PDF.
      * @return bool Verdadero si se guarda correctamente, falso en caso contrario.
      */
