@@ -1,84 +1,67 @@
 <?php
+// src/CalendarGenerator.php
 
 namespace App;
 
 /**
- * Clase que genera calendarios en formato HTML para un rango de años.
- *
- * Esta clase contiene métodos estáticos para generar el calendario de un mes
- * y para generar calendarios completos en un rango de años, mostrando nombres de meses
- * y días en español.
+ * Clase para generar calendarios en formato HTML para un rango de años.
  */
 class CalendarGenerator
 {
     /**
-     * Genera el HTML de una tabla representando el calendario de un mes específico.
+     * Genera el HTML de un calendario para un mes y año específicos.
      *
      * @param int $year Año del calendario.
-     * @param int $month Mes (de 1 a 12) del calendario.
-     * @return string HTML del calendario generado.
+     * @param int $month Mes (1-12) del calendario.
+     * @return string HTML del calendario.
      */
     public static function generateCalendar(int $year, int $month): string
     {
-        // Crear un objeto DateTime para el primer día del mes.
         $date = new \DateTime("$year-$month-01");
-
-        // Obtener el número total de días del mes.
         $daysInMonth = (int)$date->format('t');
-
-        // Obtener el día de la semana del primer día (0 = Domingo, 6 = Sábado).
         $firstDayWeek = (int)$date->format('w');
 
-        // Nombres de los meses en español.
         $monthNames = [
             1  => 'Enero',  2  => 'Febrero', 3  => 'Marzo',
             4  => 'Abril',  5  => 'Mayo',    6  => 'Junio',
             7  => 'Julio',  8  => 'Agosto',  9  => 'Septiembre',
-            10 => 'Octubre',11 => 'Noviembre', 12 => 'Diciembre'
+            10 => 'Octubre',11 => 'Noviembre', 12 => 'Diciembre',
         ];
-        $monthName = $monthNames[$month];
+        $monthName = $monthNames[$month] ?? "Mes desconocido";
 
-        // Construir el HTML del calendario.
-        $output = "<table class='calendario'>";
-        $output .= "<thead>";
-        $output .= "<tr><th colspan='7'>$monthName $year</th></tr>";
-
-        // Encabezados de los días de la semana (en español).
+        $html = "<table class='calendario'>";
+        $html .= "<thead>";
+        $html .= "<tr><th colspan='7'>$monthName $year</th></tr>";
+        $html .= "<tr>";
         $weekDays = ['Dom', 'Lun', 'Mar', 'Mié', 'Jue', 'Vie', 'Sáb'];
-        $output .= "<tr>";
-        foreach ($weekDays as $dayName) {
-            $output .= "<th>$dayName</th>";
+        foreach ($weekDays as $day) {
+            $html .= "<th>$day</th>";
         }
-        $output .= "</tr>";
-        $output .= "</thead>";
-        $output .= "<tbody>";
+        $html .= "</tr>";
+        $html .= "</thead>";
+        $html .= "<tbody><tr>";
 
-        // Iniciar la primera fila y agregar celdas vacías hasta el primer día.
-        $output .= "<tr>";
+        // Las celdas vacías hasta el primer día del mes
         for ($i = 0; $i < $firstDayWeek; $i++) {
-            $output .= "<td></td>";
+            $html .= "<td></td>";
         }
 
-        // Llenar la tabla con los días del mes.
         for ($day = 1; $day <= $daysInMonth; $day++) {
-            // Si se inicia una nueva semana, cerrar la fila anterior.
-            if (($firstDayWeek + $day - 1) % 7 === 0 && $day != 1) {
-                $output .= "</tr><tr>";
+            if (($firstDayWeek + $day - 1) % 7 === 0 && $day !== 1) {
+                $html .= "</tr><tr>";
             }
-            $output .= "<td>$day</td>";
+            $html .= "<td>$day</td>";
         }
 
-        // Completar la fila final con celdas vacías si es necesario.
-        $remainingCells = (7 - (($firstDayWeek + $daysInMonth) % 7)) % 7;
-        for ($i = 0; $i < $remainingCells; $i++) {
-            $output .= "<td></td>";
+        // Completar la última fila si es necesario
+        $remaining = (7 - (($firstDayWeek + $daysInMonth) % 7)) % 7;
+        for ($i = 0; $i < $remaining; $i++) {
+            $html .= "<td></td>";
         }
-        $output .= "</tr>";
+        $html .= "</tr></tbody>";
+        $html .= "</table>";
 
-        $output .= "</tbody>";
-        $output .= "</table>";
-
-        return $output;
+        return $html;
     }
 
     /**
@@ -86,7 +69,7 @@ class CalendarGenerator
      *
      * @param int $startYear Año inicial.
      * @param int $endYear Año final.
-     * @return string HTML con los calendarios generados para cada año.
+     * @return string HTML con los calendarios generados.
      */
     public static function generateCalendars(int $startYear, int $endYear): string
     {
