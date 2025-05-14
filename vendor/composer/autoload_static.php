@@ -6,26 +6,23 @@ namespace Composer\Autoload;
 
 class ComposerStaticInit22c79e1d10642d0fdf0de0d86bffc723
 {
-    public static $files = array (
-        '6124b4c8570aa390c21fafd04a26c69f' => __DIR__ . '/..' . '/myclabs/deep-copy/src/DeepCopy/deep_copy.php',
-    );
-
     public static $prefixLengthsPsr4 = array (
         'S' => 
         array (
-            'Symfony\\Component\\Process\\' => 26,
+            'Svg\\' => 4,
+            'Sabberworm\\CSS\\' => 15,
         ),
-        'P' => 
+        'M' => 
         array (
-            'Psr\\Log\\' => 8,
+            'Masterminds\\' => 12,
         ),
-        'K' => 
+        'F' => 
         array (
-            'Knp\\Snappy\\' => 11,
+            'FontLib\\' => 8,
         ),
         'D' => 
         array (
-            'DeepCopy\\' => 9,
+            'Dompdf\\' => 7,
         ),
         'A' => 
         array (
@@ -34,21 +31,25 @@ class ComposerStaticInit22c79e1d10642d0fdf0de0d86bffc723
     );
 
     public static $prefixDirsPsr4 = array (
-        'Symfony\\Component\\Process\\' => 
+        'Svg\\' => 
         array (
-            0 => __DIR__ . '/..' . '/symfony/process',
+            0 => __DIR__ . '/..' . '/dompdf/php-svg-lib/src/Svg',
         ),
-        'Psr\\Log\\' => 
+        'Sabberworm\\CSS\\' => 
         array (
-            0 => __DIR__ . '/..' . '/psr/log/src',
+            0 => __DIR__ . '/..' . '/sabberworm/php-css-parser/src',
         ),
-        'Knp\\Snappy\\' => 
+        'Masterminds\\' => 
         array (
-            0 => __DIR__ . '/..' . '/knplabs/knp-snappy/src/Knp/Snappy',
+            0 => __DIR__ . '/..' . '/masterminds/html5/src',
         ),
-        'DeepCopy\\' => 
+        'FontLib\\' => 
         array (
-            0 => __DIR__ . '/..' . '/myclabs/deep-copy/src/DeepCopy',
+            0 => __DIR__ . '/..' . '/dompdf/php-font-lib/src/FontLib',
+        ),
+        'Dompdf\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/dompdf/dompdf/src',
         ),
         'App\\' => 
         array (
@@ -58,6 +59,7 @@ class ComposerStaticInit22c79e1d10642d0fdf0de0d86bffc723
 
     public static $classMap = array (
         'Composer\\InstalledVersions' => __DIR__ . '/..' . '/composer/InstalledVersions.php',
+        'Dompdf\\Cpdf' => __DIR__ . '/..' . '/dompdf/dompdf/lib/Cpdf.php',
     );
 
     public static function getInitializer(ClassLoader $loader)
